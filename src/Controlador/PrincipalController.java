@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
 public class PrincipalController implements Initializable {
@@ -25,6 +26,18 @@ public class PrincipalController implements Initializable {
 
 	@FXML
 	private Label lblMensaje;
+	
+	@FXML
+	private Label lblCadenaDesencriptada;
+	
+	@FXML
+	private Button btnDesencriptar;
+	
+	@FXML
+	private TextField txtCadenaEncriptada;
+	
+	@FXML
+	private TextField txtArchivo;
 
 	private Encriptador encriptador;
 
@@ -59,6 +72,25 @@ public class PrincipalController implements Initializable {
 			alert.setTitle("Error!!!!!!!");
 			alert.setHeaderText(null);
 			alert.setContentText("Debe ingresar una cadena a encriptar");
+
+			alert.showAndWait();
+		}
+	}
+	
+	@FXML
+	public void desencriptarCadena(ActionEvent e) {
+		String cadenaEncriptada = txtCadenaEncriptada.getText();
+		String archivo = txtArchivo.getText();
+		
+		if(!cadenaEncriptada.isEmpty() && !archivo.isEmpty()) {
+			encriptador = new Encriptador(cadenaEncriptada, archivo);
+			String cadenaDesencriptada = encriptador.desencriptarCadena(cadenaEncriptada, archivo);
+			lblCadenaDesencriptada.setText(cadenaDesencriptada);
+		} else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error!!!!!!!");
+			alert.setHeaderText(null);
+			alert.setContentText("Debe llenar todos los campos");
 
 			alert.showAndWait();
 		}

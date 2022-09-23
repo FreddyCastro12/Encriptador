@@ -5,8 +5,8 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PrincipalController">
    <children>
@@ -27,7 +27,17 @@
           </Tab>
           <Tab text="Desencriptar">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="27.0" layoutY="26.0" prefHeight="18.0" prefWidth="194.0" text="Cadena encriptada: " />
+                        <Label layoutX="27.0" layoutY="85.0" prefHeight="18.0" prefWidth="192.0" text="Nombre del archivo: " />
+                        <TextField fx:id="txtCadenaEncriptada" layoutX="192.0" layoutY="23.0" prefHeight="26.0" prefWidth="367.0" />
+                        <TextField fx:id="txtArchivo" layoutX="193.0" layoutY="82.0" prefHeight="26.0" prefWidth="366.0" />
+                        <Button fx:id="btnDesencriptar" layoutX="27.0" layoutY="166.0" mnemonicParsing="false" onAction="#desencriptarCadena" prefHeight="26.0" prefWidth="306.0" text="Desencriptar" />
+                        <Button layoutX="351.0" layoutY="166.0" mnemonicParsing="false" onAction="#limpiarCampo" prefHeight="26.0" prefWidth="306.0" text="Limpiar" />
+                        <Label layoutX="27.0" layoutY="308.0" prefHeight="18.0" prefWidth="222.0" text="La cadena desencriptada es: " />
+                        <Label fx:id="lblCadenaDesencriptada" layoutX="249.0" layoutY="309.0" prefHeight="18.0" prefWidth="375.0" />
+                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>
